@@ -107,7 +107,7 @@
         <div class="row">
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -117,7 +117,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -127,7 +127,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -137,7 +137,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -147,7 +147,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -157,7 +157,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -167,7 +167,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -177,7 +177,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -187,7 +187,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
@@ -197,7 +197,7 @@
             </div>
             <div class="col-6 col-md-3 col-lg-2 mb-4">
                 <div class="card">
-                    <img src="../Asset/image/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
+                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
                     <div class=" card-body">
                         <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
                         <p class="card-text">Rp.8000</p>
