@@ -22,7 +22,7 @@
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">
                     <div class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="#"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                        <a class="nav-link" href="KeranjangBarang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
                     </div>
                     <div class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
