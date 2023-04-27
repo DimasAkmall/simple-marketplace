@@ -1,3 +1,8 @@
+<?php
+include "../Controller/KategoriController.php";
+include "../Controller/BarangController.php";
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -74,30 +79,11 @@
         <div class="p-3 bg-secondary rounded">
             <p class="d-block">CATEGORY</p>
             <div class="d-flex flex-row justify-content-evenly overflow-auto pe-3">
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/snack.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/soft-drink.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/soap.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/cigarettes.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/pills.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/grocery.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/cleaning.png" alt="" width="40">
-                </div>
-                <div class="box p-3 bg-dark rounded ms-3">
-                    <img src="../Asset/image/Kategori/pencil-box.png" alt="" width="40">
-                </div>
+                <?php foreach ($kategori->getAll() as $k) { ?>
+                    <div class="box p-3 bg-dark rounded ms-3">
+                        <img src="../Asset/image/Kategori/<?= $k["gambar"] ?>" alt="" width="40">
+                    </div>
+                <?php } ?>
             </div>
         </div>
     </div>
@@ -105,106 +91,20 @@
     <!-- MAIN CONTENT -->
     <div class="container mt-4">
         <div class="row">
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
+            <?php foreach ($barang->getAllNew() as $b) { ?>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <div class="card h-100">
+                        <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" class="card-img-top w-auto m-2" alt="...">
+                        <div class="card-body d-flex justify-content-between flex-column">
+                            <div>
+                                <h5 class="card-title"><?= $b["namaBrg"] ?></h5>
+                                <p class="card-text">Rp. <?= number_format($b["harga"]) ?></p>
+                            </div>
+                            <a href="#" class="btn btn-primary w-100 mt-3">Beli</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-6 col-md-3 col-lg-2 mb-4">
-                <div class="card">
-                    <img src="../Asset/image/Makanan/chitato-rl-35gr.png" class="card-img-top w-auto m-2" alt="...">
-                    <div class=" card-body">
-                        <h5 class="card-title">Chitato Rumput Laut 35gr</h5>
-                        <p class="card-text">Rp.8000</p>
-                        <a href="#" class="btn btn-primary w-100">Beli</a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
 
         </div>
     </div>
