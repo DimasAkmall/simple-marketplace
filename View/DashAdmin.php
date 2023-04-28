@@ -10,7 +10,7 @@
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link rel="stylesheet" href="../Asset/css/styles.css">
+    <link rel="stylesheet" href="../Asset/css/StyleAdmin.css">
     <!-- css gg  -->
     <link href='https://unpkg.com/css.gg@2.0.0/icons/css/menu.css' rel='stylesheet'>
     <style>
@@ -20,14 +20,13 @@
             border: none;
             opacity: 0.9;
         }
-        
+
         .title-body {
             font-weight: 700;
             font-size: 22px;
             color: #0086ad;
             margin-bottom: 20px;
         }
-
     </style>
 </head>
 
@@ -43,25 +42,20 @@
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Barang</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">History</a>
             </div>
-    </div>
+        </div>
         <!-- Page content wrapper-->
         <div id="page-content-wrapper">
             <!-- Top navigation-->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <div class="container-fluid">
                     <button class="btn p-3" id="sidebarToggle"><i class="gg-menu"></i></button>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation"><span
-                            class="navbar-toggler-icon"></span></button>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
 
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                             <li class="nav-item dropdown ms-3">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                    data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="../Asset/image/user.png" alt="" class="rounded-circle" width="20"
-                                        height="20" />Username
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../Asset/image/user.png" alt="" class="rounded-circle" width="20" height="20" />Username
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#!">Logout</a>
@@ -72,7 +66,7 @@
                 </div>
             </nav>
             <!-- Page content-->
-            
+
             <main class="" role="main">
                 <div class="container">
                     <div class="content-header mt-1 mb-3 ml-3">
@@ -154,10 +148,10 @@
                 </div>
             </main>
         </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- Core theme JS-->
+        <script src="../Asset/js/scripts.js"></script>
 </body>
 
 </html>
