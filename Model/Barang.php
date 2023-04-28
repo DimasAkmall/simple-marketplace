@@ -11,4 +11,11 @@ class Barang {
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getBarangById($id) {
+        $query = $this->con->prepare('SELECT barang.id, barang.namaBrg, barang.harga, barang.gambar, barang.desc, kategori.kategori FROM barang LEFT JOIN kategori ON barang.kategori = kategori.id WHERE barang.id=:id');
+        $query->bindParam(":id", $id);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }

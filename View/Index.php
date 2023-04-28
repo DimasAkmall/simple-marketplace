@@ -18,7 +18,7 @@ include "../Controller/BarangController.php";
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
             <?php if (isset($_SESSION["role"])) : ?>
                 <ul class="navbar-nav ms-auto py-1">
                     <button type="button" class="btn btn-primary me-2">Login</button>
@@ -27,7 +27,7 @@ include "../Controller/BarangController.php";
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">
                     <div class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="KeranjangBarang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                        <a class="nav-link" href="./Keranjang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
                     </div>
                     <div class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
@@ -100,7 +100,7 @@ include "../Controller/BarangController.php";
                                 <h5 class="card-title"><?= $b["namaBrg"] ?></h5>
                                 <p class="card-text">Rp. <?= number_format($b["harga"]) ?></p>
                             </div>
-                            <a href="#" class="btn btn-primary w-100 mt-3">Beli</a>
+                            <a href="./DetailBarang.php?id=<?= $b["id"] ?>" class="btn btn-primary w-100 mt-3">Beli</a>
                         </div>
                     </div>
                 </div>

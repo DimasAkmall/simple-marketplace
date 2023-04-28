@@ -1,3 +1,10 @@
+<?php
+include "../Controller/KeranjangController.php";
+include "../Controller/BarangController.php";
+
+
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -31,7 +38,7 @@
         </div>
     </nav>
 
-
+    <!-- MAIN CONTENT -->
     <section class="pt-5 pb-5">
         <div class="container">
             <div class="row w-100">
@@ -47,43 +54,53 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="bg-primary">
-                                <td data-th="Product" class="bg-danger ">
-                                    <div class="row ">
-                                        <div class="col-md-3 text-left">
-                                            <img src="../Asset/image/Mandi/garnier-acno-fight.png" alt="" class="img-fluid d-none d-md-block rounded mb-2" width="80">
-                                        </div>
-                                        <div class="col-md-9 text-left mt-sm-2">
-                                            <h5>Product Name</h5>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td data-th="Harga"><p class="fs-5">Rp. 20.000,00</p></td>
-                                <td data-th="Jumlah">
-                                    <input type="number" class="form-control form-control-lg text-center" value="1">
-                                </td>
-                                <td class="actions" data-th="">
-                                    <div class="text-right">
-                                    <button class="btn btn-white border-secondary bg-warning btn-md mb-2">
-                                            <img src="../Asset/image/edit.png" alt="">
-                                        </button>
-                                        <button class="btn btn-white border-secondary bg-danger btn-md mb-2">
-                                            <img src="../Asset/image/trash.png" alt="">
-                                        </button>
-                                    </div>
-                                </td>
-                            </tr>
+                            <?php
+                            $total = 0;
+                            foreach ($keranjang->getKeranjangById(1) as $k) {
+                                foreach ($barang->getBarangById($k["id_barang"]) as $b) {
+                                    $tempTotal = $k["jumlah"] * $b["harga"];
+                                    $total += $tempTotal; ?>
+                                    <tr>
+                                        <td data-th="Product">
+                                            <div class="row ">
+                                                <div class="col-md-3">
+                                                    <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" alt="" class="img-fluid shadow d-none d-md-block rounded" width="60">
+                                                </div>
+                                                <div class="col-md-9">
+                                                    <h5><?= $b["namaBrg"] ?></h5>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td data-th="Harga" class="bg-danger">
+                                            <p class="fs-5 text-center bg-primary"><?= $b["harga"] ?></p>
+                                        </td>
+                                        <td data-th="Jumlah">
+                                            <p class="fs-5 text-center"><?= $k["jumlah"] ?></p>
+                                        </td>
+                                        <td data-th="actions">
+                                            <div class="d-flex justify-content-center">
+                                                <button class="btn border-secondary bg-warning me-1">
+                                                    <img src="../Asset/image/edit.png" alt="">
+                                                </button>
+                                                <button class="btn border-secondary bg-danger">
+                                                    <img src="../Asset/image/trash.png" alt="">
+                                                </button>
+                                            </div>
+                                        </td>
+                                    </tr>
+                            <?php }
+                            } ?>
                         </tbody>
                     </table>
                     <div class="float-right text-right" style="text-align: right;">
                         <h4>Total:</h4>
-                        <h1>Rp 99.000,00</h1>
+                        <h1>Rp. <?= number_format($total) ?></h1>
                     </div>
                 </div>
             </div>
             <div class="row container mt-4 d-flex align-items-center">
                 <div class="col-sm-6 mb-3 mb-m-1 order-md-1 text-md-left">
-                    <a href="wellcome.html">
+                    <a href="./Index.php">
                         <i class="fas fa-arrow-left mr-2"></i> Continue Shopping</a>
                 </div>
                 <div class="col-sm-6 order-md-2 text-right" style="text-align: right;">
