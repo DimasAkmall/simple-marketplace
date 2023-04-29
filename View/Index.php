@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "../Controller/KategoriController.php";
 include "../Controller/BarangController.php";
 ?>
