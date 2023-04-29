@@ -115,3 +115,5 @@ $_SESSION["currentKategori"] = $_GET["kategori"];
 </body>
 
 </html>
+
+</html>
