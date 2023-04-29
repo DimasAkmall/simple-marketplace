@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,7 +26,6 @@
               </div>
 
               <form action="../Controller/LoginController.php" method="post">
-
                 <div class="form-outline form-white mb-4 mt-2">
                   <label class="form-label"><b>Username</b></label>
                   <input type="text" name="username" id="typeEmailX" class="form-control form-control-lg" required />

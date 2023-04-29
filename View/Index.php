@@ -1,5 +1,16 @@
 <?php
 session_start();
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $username = $_SESSION["username"];
+}
+
+$_SESSION["prevPage"] = "Index.php";
+
+// if (!isset($_SESSION["id"]) || $_SESSION["role"] != "user") {
+//     header("Location: Login.php");
+// }
+
 include "../Controller/KategoriController.php";
 include "../Controller/BarangController.php";
 ?>
@@ -13,6 +24,7 @@ include "../Controller/BarangController.php";
     <title>BelanjaIn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
+    <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
 </head>
 
 <body>
@@ -20,23 +32,23 @@ include "../Controller/BarangController.php";
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
-            <?php if (isset($_SESSION["role"])) : ?>
-                <ul class="navbar-nav ms-auto py-1">
-                    <button type="button" class="btn btn-primary me-2">Login</button>
-                    <button type="button" class="btn btn-secondary">Sign Up</button>
+            <?php if (!isset($_SESSION["role"])) : ?>
+                <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
+                    <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
+                    <a class="btn btn-secondary" href="Register.php" role="button">Sign up</a>
                 </ul>
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">
                     <div class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="./Keranjang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                        <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
                     </div>
                     <div class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
-                            <img src=" ../Asset/image/user.png" alt="" class="rounded-circle" width="35" height="35" />
-                            <span id="usernameField">Username</span>
+                            <img src=" ../Asset/image/user.png" alt="" class="rounded-circle me-1" width="35" height="35" />
+                            <span id="usernameField"><?= $username ?></span>
                         </a>
                         <ul class="dropdown-menu dropdown-menu-end">
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
+                            <li><a class="dropdown-item" href="../Controller/LogoutController.php">Logout</a></li>
                         </ul>
                     </div>
                 </div>

@@ -1,6 +1,11 @@
 <?php
+session_start();
 include "../Controller/KeranjangController.php";
 include "../Controller/BarangController.php";
+if (!isset($_SESSION["id"])) {
+    header("Location: Index.php");
+}
+
 ?>
 
 <!doctype html>
@@ -12,6 +17,7 @@ include "../Controller/BarangController.php";
     <title>BelanjaIn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
+    <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
 </head>
 
 <body>
@@ -21,15 +27,15 @@ include "../Controller/BarangController.php";
             <a class="navbar-brand" href="#">BelanjaIn</a>
             <div class="navbar-expand-md d-flex flex-row">
                 <div class="nav-item d-flex align-items-center">
-                    <a class="nav-link" href="#"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                    <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
                 </div>
                 <div class="nav-item dropdown ms-3">
                     <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
-                        <img src=" ../Asset/image/user.png" alt="" class="rounded-circle" width="35" height="35" />
-                        <span id="usernameField">Username</span>
+                        <img src=" ../Asset/image/user.png" alt="" class="rounded-circle me-1" width="35" height="35" />
+                        <span id="usernameField"><?= $username ?></span>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                        <li><a class="dropdown-item" href="../Controller/LogoutController.php">Logout</a></li>
                     </ul>
                 </div>
             </div>
@@ -53,7 +59,7 @@ include "../Controller/BarangController.php";
                     <tbody>
                         <?php
                         $total = 0;
-                        foreach ($keranjang->getKeranjangById(1) as $k) {
+                        foreach ($keranjang->getKeranjangById($_GET["id"]) as $k) {
                             foreach ($barang->getBarangById($k["id_barang"]) as $b) {
                                 $tempTotal = $k["jumlah"] * $b["harga"];
                                 $total += $tempTotal; ?>
@@ -69,15 +75,22 @@ include "../Controller/BarangController.php";
                                         </div>
                                     </td>
                                     <td data-th="Harga">
-                                        <p class="fs-5 text-center"><?= $b["harga"] ?></p>
+                                        <p class="fs-5 text-center"><?= number_format($b["harga"]) ?></p>
                                     </td>
                                     <td data-th="Jumlah">
                                         <p class="fs-5 text-center"><?= $k["jumlah"] ?></p>
                                     </td>
                                     <td data-th="actions">
                                         <div class="d-flex justify-content-center">
-                                            <button type="button" class="btn btn-warning border-secondary me-1" onclick="promptJumlah()"><img src="../Asset/image/edit.png" alt=""></button>
-                                            <button type="button" class="btn btn-danger border-secondary"><img src="../Asset/image/trash.png" alt=""></button>
+                                            <form action="../Controller/KeranjangController.php" method="post">
+                                                <input type="hidden" name="id" value="<?= $k["id"] ?>">
+                                                <input type="hidden" id="newJumlah<?= $k["id"] ?>" name="newJumlah" value="">
+                                                <button class="btn btn-warning border-secondary me-1" type="submit" name="edit" onclick="promptJumlah(<?= $k['id'] ?>)"><img src="../Asset/image/edit.png" alt=""></button>
+                                            </form>
+                                            <form action="../Controller/KeranjangController.php" method="post">
+                                                <input type="hidden" name="id" value="<?= $k["id"] ?>">
+                                                <button class="btn btn-danger border-secondary" type="submit" name="delete"><img src="../Asset/image/trash.png" alt=""></button>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -88,9 +101,24 @@ include "../Controller/BarangController.php";
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-5">
             <div class="col-6 col-md-4 col-lg-3 d-flex align-items-end">
-                <a class="btn btn-secondary mt-3" href="./Index.php" role="button">Continue Shopping</a>
+                <?php if ($_SESSION["prevPage"] == "DetailBarang.php") { ?>
+                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>?id=<?= $_SESSION["currentIdBarang"] ?>" role="button">
+                        <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
+                        Back
+                    </a>
+                <?php } else if ($_SESSION["prevPage"] == "Kategori.php") { ?>
+                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button">
+                        <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
+                        Back
+                    </a>
+                <?php } else { ?>
+                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>" role="button">
+                        <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
+                        Back
+                    </a>
+                <?php } ?>
             </div>
             <div class="col-6 col-md-4 col-lg-3 d-flex flex-column ms-auto">
                 <div class="pe-md-4">
@@ -109,9 +137,14 @@ include "../Controller/BarangController.php";
     <script src="../Asset/js/ResponsiveNavUser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
-        function promptJumlah() {
-            $newJumlah = prompt("masukkan jumlah baru");
-            console.log($newJumlah);
+        function promptJumlah(id) {
+            newJumlah = prompt("masukkan jumlah baru");
+            if (newJumlah <= 0) {
+                return alert("Ndak boleh yaa!")
+            } else {
+                document.querySelector("#newJumlah" + id).setAttribute("value", "")
+                return document.querySelector("#newJumlah" + id).setAttribute("value", newJumlah)
+            }
         }
     </script>
 </body>

@@ -1,6 +1,14 @@
 <?php
+session_start();
 include "../Controller/BarangController.php";
 include "../Controller/KategoriController.php";
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $username = $_SESSION["username"];
+}
+
+$_SESSION["prevPage"] = "Kategori.php";
+$_SESSION["currentKategori"] = $_GET["kategori"];
 ?>
 <!doctype html>
 <html lang="en">
@@ -11,6 +19,7 @@ include "../Controller/KategoriController.php";
     <title>BelanjaIn</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
+    <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
 </head>
 
 <body>
@@ -18,20 +27,27 @@ include "../Controller/KategoriController.php";
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
             <a class="navbar-brand" href="#">BelanjaIn</a>
-            <div class="navbar-expand-md d-flex flex-row">
-                <div class="nav-item d-flex align-items-center">
-                    <a class="nav-link" href="KeranjangBarang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+            <?php if (!isset($_SESSION["role"])) : ?>
+                <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
+                    <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
+                    <a class="btn btn-secondary" href="Register.php" role="button">Sign up</a>
+                </ul>
+            <?php else : ?>
+                <div class="navbar-expand-md d-flex flex-row">
+                    <div class="nav-item d-flex align-items-center">
+                        <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                    </div>
+                    <div class="nav-item dropdown ms-3">
+                        <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
+                            <img src=" ../Asset/image/user.png" alt="" class="rounded-circle me-1" width="35" height="35" />
+                            <span id="usernameField"><?= $username ?></span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="../Controller/LogoutController.php">Logout</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="nav-item dropdown ms-3">
-                    <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
-                        <img src=" ../Asset/image/user.png" alt="" class="rounded-circle" width="35" height="35" />
-                        <span id="usernameField">Username</span>
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#">Logout</a></li>
-                    </ul>
-                </div>
-            </div>
+            <?php endif; ?>
         </div>
     </nav>
 
@@ -61,7 +77,7 @@ include "../Controller/KategoriController.php";
     </div>
 
     <!-- FOOTER -->
-    <div class="container-fluid mt-4 bg-secondary">
+    <!-- <div class="container-fluid mt-4 bg-secondary">
         <div class="container">
             <div class="row d-flex justify-content-between pt-2 pb-5">
                 <div class="col-6 col-md-2 mb-3">
@@ -92,7 +108,7 @@ include "../Controller/KategoriController.php";
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <script src="../Asset/js/ResponsiveNavUser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
