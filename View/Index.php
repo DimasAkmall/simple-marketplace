@@ -77,12 +77,12 @@ include "../Controller/BarangController.php";
     <!-- CATEGORY -->
     <div class="container mt-4">
         <div class="p-3 bg-secondary rounded">
-            <p class="d-block">CATEGORY</p>
-            <div class="d-flex flex-row justify-content-evenly overflow-auto pe-3">
+            <h6>KATEGORI</h6>
+            <div class="d-flex flex-row overflow-auto ps-md-4 ps-lg-0 box-category">
                 <?php foreach ($kategori->getAll() as $k) { ?>
-                    <div class="box p-3 bg-dark rounded ms-3">
+                    <a class="btn btn-dark p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
                         <img src="../Asset/image/Kategori/<?= $k["gambar"] ?>" alt="" width="40">
-                    </div>
+                    </a>
                 <?php } ?>
             </div>
         </div>
@@ -90,6 +90,7 @@ include "../Controller/BarangController.php";
 
     <!-- MAIN CONTENT -->
     <div class="container mt-4">
+        <h3>Produk Terbaru</h3>
         <div class="row">
             <?php foreach ($barang->getAllNew() as $b) { ?>
                 <div class="col-6 col-md-3 col-lg-2 mb-4">

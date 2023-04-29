@@ -3,3 +3,9 @@
         display: none;
     }
 }
+
+@media (min-width: 576px) {
+    .box-category {
+        justify-content: space-evenly;
+    }
+}

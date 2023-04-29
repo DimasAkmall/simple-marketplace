@@ -18,4 +18,11 @@ class Barang {
         $query->execute();
         return $query->fetchAll();
     }
+
+    public function getBarangByKategori($kategori) {
+        $query = $this->con->prepare('SELECT barang.id, barang.namaBrg, barang.harga, barang.gambar, kategori.kategori FROM barang LEFT JOIN kategori ON barang.kategori = kategori.id WHERE kategori.kategori = :kategori ORDER BY id DESC');
+        $query->bindParam(":kategori", $kategori);
+        $query->execute();
+        return $query->fetchAll();
+    }
 }
