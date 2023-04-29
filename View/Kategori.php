@@ -1,9 +1,7 @@
 <?php
 include "../Controller/BarangController.php";
-
-$b = $barang->getBarangById($_GET["id"]);
+include "../Controller/KategoriController.php";
 ?>
-
 <!doctype html>
 <html lang="en">
 
@@ -22,7 +20,7 @@ $b = $barang->getBarangById($_GET["id"]);
             <a class="navbar-brand" href="#">BelanjaIn</a>
             <div class="navbar-expand-md d-flex flex-row">
                 <div class="nav-item d-flex align-items-center">
-                    <a class="nav-link" href="./Keranjang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                    <a class="nav-link" href="KeranjangBarang.php"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
                 </div>
                 <div class="nav-item dropdown ms-3">
                     <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
@@ -38,48 +36,28 @@ $b = $barang->getBarangById($_GET["id"]);
     </nav>
 
     <!-- MAIN CONTENT -->
-    <div class="container mt-5" style="padding-top:2.4rem;">
-        <div class="row d-flex justify-content-center">
-            <div class="col-md-10">
-                <div class="card cardbg text-dark">
-                    <div class="row">
-                        <div class="col-12 col-lg-6">
-                            <div class="images ">
-                                <img class="w-100 rounded-start" src="../Asset/image/<?= $b[0]["kategori"] ?>/<?= $b[0]["gambar"] ?>" alt="">
+    <div class="container mt-5" style="padding-top:2.4rem">
+        <div class="d-flex mb-3">
+            <a class="btn btn-secondary text-dark me-1" href="./Index.php" role="button"><img src="../Asset/image/back-button.png" alt="" class="me-1" width="25"> Back</a>
+            <h3><?= $_GET["kategori"] ?></h3>
+        </div>
+        <div class="row">
+            <?php foreach ($barang->getBarangByKategori($_GET["kategori"]) as $b) { ?>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <div class="card h-100">
+                        <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" class="card-img-top w-auto m-2" alt="...">
+                        <div class="card-body d-flex justify-content-between flex-column">
+                            <div>
+                                <h5 class="card-title"><?= $b["namaBrg"] ?></h5>
+                                <p class="card-text">Rp. <?= number_format($b["harga"]) ?></p>
                             </div>
-                        </div>
-                        <div class="col-12 col-lg-6 d-flex align-items-center">
-                            <div class="product p-4 w-100 h-100">
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="d-flex align-items-center"> <i class="fa fa-long-arrow-left"></i>
-                                        <a href="wellcome.html">
-                                            <a href="Index.php" class="fs-5 text-decoration-none text-dark"><img src="../Asset/image/back-button.png" alt=""> Back</a>
-                                    </div> <i class="fa fa-shopping-cart text-muted"></i>
-                                </div>
-                                <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand"><?= $b[0]["kategori"] ?></span>
-                                    <h5 class="text-uppercase"><?= $b[0]["namaBrg"] ?></h5>
-                                    <div class="ml-2"> <small class="dis-price">Rp. <?= number_format($b[0]["harga"]) ?></small></div>
-                                </div>
-
-                                <div class="container">
-                                    <p><?= $b[0]["desc"] ?></p>
-                                    <div class="Jumlah mt-5">
-                                        <h6 class="text-uppercase">Jumlah</h6>
-                                        <input type="number" class="form-control form-control-lg text-center" value="1">
-                                    </div>
-                                    <div class="cart mt-4 mb-4 d-flex justify-content-end">
-                                        <button class="btn btn-primary px-4">Keranjang</button>
-                                        <i class="fa fa-heart text-muted"></i>
-                                        <i class="fa fa-share-alt text-muted"></i>
-                                    </div>
-                                </div>
-                            </div>
+                            <a href="./DetailBarang.php?id=<?= $b["id"] ?>" class="btn btn-primary w-100 mt-3">Beli</a>
                         </div>
                     </div>
                 </div>
-            </div>
+            <?php } ?>
+
         </div>
-    </div>
     </div>
 
     <!-- FOOTER -->
