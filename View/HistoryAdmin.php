@@ -1,3 +1,7 @@
+<?php
+include "../Controller/TransaksiController.php";
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,8 +11,6 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Simple Sidebar - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="../Asset/css/StyleAdmin.css">
     <!-- css gg  -->
@@ -68,13 +70,21 @@
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light">BelanjaIn</div>
+            <div class="sidebar-heading border-bottom bg-light fs-4 py-2">BelanjaIn</div>
             <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Dashboard</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Pengguna</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Kategori</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">Barang</a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="#!">History</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="DashAdmin.php">Dashboard</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="BarangAdmin.php">Barang</a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="KategoriAdmin.php">Kategori</a>
+
+                <!-- <?php //if ($_SESSION["role"] == "superadmin") { 
+                        ?> -->
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="AdminAdmin.php">Administrator</a>
+                <!-- <?php //} else { 
+                        ?> -->
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="UserAdmin.php">Pengguna</a>
+                <!-- <?php //} 
+                        ?> -->
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="HistoryAdmin.php">History</a>
             </div>
         </div>
         <!-- Page content wrapper-->
@@ -88,8 +98,8 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ms-auto mt-2 mt-lg-0">
                             <li class="nav-item dropdown ms-3">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="../Asset/image/user.png" alt="" class="rounded-circle" width="20" height="20" />Username
+                                <a class="nav-link dropdown-toggle p-0" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="../Asset/image/user.png" alt="" class="rounded-circle me-1" width="35" height="35" />Username
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="#!">Logout</a>
@@ -99,6 +109,7 @@
                     </div>
                 </div>
             </nav>
+
             <!-- Page content-->
             <div class="container mt-4">
                 <h6><? //echo //$message 
@@ -108,7 +119,7 @@
                         <div class="card" style="background-color: #EBECED;">
                             <div class="card-header">
                                 <div class="content-header mt-1 mb-3 ml-3">
-                                    <h2 class="text-header">History</h2>
+                                    <h2 class="text-header">Histori Transaksi</h2>
                                 </div>
                             </div>
                             <div class="card-body">
@@ -122,24 +133,14 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <?php
-                                        // Simulasi data transaksi
-                                        $transaksi = array(
-                                            array('id' => 1, 'username' => 'JohnDoe', 'tanggal' => '2023-04-29', 'total' => 100),
-                                            array('id' => 2, 'username' => 'JaneSmith', 'tanggal' => '2023-04-30', 'total' => 150),
-                                            array('id' => 3, 'username' => 'BobJohnson', 'tanggal' => '2023-05-01', 'total' => 200)
-                                        );
-
-                                        // Loop melalui data transaksi dan tampilkan dalam tabel
-                                        foreach ($transaksi as $row) {
-                                            echo "<tr>";
-                                            echo "<td>" . $row['id'] . "</td>";
-                                            echo "<td>" . $row['username'] . "</td>";
-                                            echo "<td>" . $row['tanggal'] . "</td>";
-                                            echo "<td>" . $row['total'] . "</td>";
-                                            echo "</tr>";
-                                        }
-                                        ?>
+                                        <?php foreach ($transaksi->getAll() as $t) { ?>
+                                            <tr>
+                                                <td><?= $t["idTransaksi"] ?></td>
+                                                <td><?= $t["username"] ?></td>
+                                                <td><?= $t["tglTransaksi"] ?></td>
+                                                <td><?= $t["total"] ?></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -147,13 +148,13 @@
                     </div>
                 </div>
             </div>
-
-
         </div>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="../Asset/js/scripts.js"></script>
+    </div>
+
+    <!-- Bootstrap core JS-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="../Asset/js/scripts.js"></script>
 </body>
 
 </html>

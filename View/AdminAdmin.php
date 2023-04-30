@@ -1,5 +1,5 @@
 <?php
-include "../Controller/UserController.php";
+include "../Controller/AdminController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,13 +98,28 @@ include "../Controller/UserController.php";
                         <div class="card" style="padding: 10px;">
                             <div class="card-header">
                                 <div class="content-header">
-                                    <h2 class="text-header">User View</h2>
-                                    <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='Signup.php'">
+                                    <h2 class="text-header mb-5">Admin View</h2>
+                                    <div class="overflow-auto">
+                                        <form action="../Controller/AdminController.php" method="post" class="d-flex flex-row">
+                                            <div class="mb-3 d-flex flex-row align-items-center me-3">
+                                                <label for="" class="form-label me-3">Username</label>
+                                                <input type="text" class="form-control w-auto" id="" name="username">
+                                            </div>
+                                            <div class="mb-3 d-flex flex-row align-items-center me-3">
+                                                <label for="" class="form-label me-3">Password</label>
+                                                <input type="password" class="form-control w-auto" id="" name="password">
+                                            </div>
+                                            <div>
+                                                <input class="btn btn-primary" type="submit" name="insertAdmin" value="Add Admin">
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <!-- <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='Signup.php'">
                                         <span class="d-flex align-items-center">
                                             <i class="gg-math-plus" style="margin-right: 5px;"></i>
-                                            <span class="fw-bold">Add User</span>
+                                            <span class="fw-bold">Add Admin</span>
                                         </span>
-                                    </button>
+                                    </button> -->
                                 </div>
                             </div>
                             <div class="card-body p-0 overflow-auto">
@@ -120,28 +135,28 @@ include "../Controller/UserController.php";
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($user->getAll() as $u) {
+                                        foreach ($admin->getAll() as $a) {
                                         ?>
                                             <tr>
                                                 <td class=" text-center"><?= $no++ ?></td>
-                                                <td><?= $u['username'] ?></td>
+                                                <td><?= $a['username'] ?></td>
                                                 <?php
                                                 $pw = "";
-                                                for ($i = 0; $i < strlen($u["password"]); $i++) {
+                                                for ($i = 0; $i < strlen($a["password"]); $i++) {
                                                     $pw .= "*";
                                                 }
                                                 ?>
                                                 <td><?= $pw ?></td>
                                                 <td class="text-center">
                                                     <div class="d-flex flex-row">
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <input type="hidden" id="newUsername<?= $u["id"] ?>" name="newUsername" value="">
-                                                            <button class="btn btn-warning border-secondary me-1" type="submit" name="editUser" onclick="promptJumlah(<?= $u['id'] ?>)"><img src="../Asset/image/edit.png" alt=""></button>
+                                                        <form action="../Controller/AdminController.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $a["id"] ?>">
+                                                            <input type="hidden" id="newUsername<?= $a["id"] ?>" name="newUsername" value="">
+                                                            <button class="btn btn-warning border-secondary me-1" type="submit" name="editAdmin" onclick="promptJumlah(<?= $a['id'] ?>)"><img src="../Asset/image/edit.png" alt=""></button>
                                                         </form>
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteUser"><img src="../Asset/image/trash.png" alt=""></button>
+                                                        <form action="../Controller/AdminController.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $a["id"] ?>">
+                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteAdmin"><img src="../Asset/image/trash.png" alt=""></button>
                                                         </form>
                                                     </div>
                                                 </td>

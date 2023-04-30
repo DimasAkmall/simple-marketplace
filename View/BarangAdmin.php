@@ -1,5 +1,5 @@
 <?php
-include "../Controller/UserController.php";
+include "../Controller/BarangController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,11 +98,11 @@ include "../Controller/UserController.php";
                         <div class="card" style="padding: 10px;">
                             <div class="card-header">
                                 <div class="content-header">
-                                    <h2 class="text-header">User View</h2>
-                                    <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='Signup.php'">
+                                    <h2 class="text-header">Barang View</h2>
+                                    <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='InputBarangAdmin.php'">
                                         <span class="d-flex align-items-center">
                                             <i class="gg-math-plus" style="margin-right: 5px;"></i>
-                                            <span class="fw-bold">Add User</span>
+                                            <span class="fw-bold">Add Barang</span>
                                         </span>
                                     </button>
                                 </div>
@@ -111,37 +111,42 @@ include "../Controller/UserController.php";
                                 <table class="table table-striped mb-0">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">No</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
+                                            <th>No</th>
+                                            <th>Kode Barang</th>
+                                            <th>Nama Barang</th>
+                                            <th>Harga</th>
+                                            <th>gambar</th>
+                                            <th>Desc</th>
+                                            <th>Kategori</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($user->getAll() as $u) {
+                                        foreach ($barang->getAll() as $b) {
                                         ?>
                                             <tr>
-                                                <td class=" text-center"><?= $no++ ?></td>
-                                                <td><?= $u['username'] ?></td>
-                                                <?php
-                                                $pw = "";
-                                                for ($i = 0; $i < strlen($u["password"]); $i++) {
-                                                    $pw .= "*";
-                                                }
-                                                ?>
-                                                <td><?= $pw ?></td>
+                                                <td class="text-center"><?= $no++ ?></td>
+                                                <td class="text-center"><?= $b['kodeBrg'] ?></td>
+                                                <td><?= $b['namaBrg'] ?></td>
+                                                <td class="text-center"><?= $b['harga'] ?></td>
+                                                <td><?= $b['gambar'] ?></td>
+                                                <td>
+                                                    <div style="width: 200px; height:3rem;" class="overflow-hidden">
+                                                        <?= $b['desc'] ?>
+                                                    </div>
+                                                </td>
+                                                <td class="text-center"><?= $b['kategori'] ?></td>
                                                 <td class="text-center">
                                                     <div class="d-flex flex-row">
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <input type="hidden" id="newUsername<?= $u["id"] ?>" name="newUsername" value="">
-                                                            <button class="btn btn-warning border-secondary me-1" type="submit" name="editUser" onclick="promptJumlah(<?= $u['id'] ?>)"><img src="../Asset/image/edit.png" alt=""></button>
+                                                        <form action="EditBarangAdmin.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $b["id"] ?>">
+                                                            <button class="btn btn-warning border-secondary me-1" type="submit"><img src="../Asset/image/edit.png" alt=""></button>
                                                         </form>
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteUser"><img src="../Asset/image/trash.png" alt=""></button>
+                                                        <form action="../Controller/BarangController.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $b["id"] ?>">
+                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteBrg"><img src="../Asset/image/trash.png" alt=""></button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -158,17 +163,6 @@ include "../Controller/UserController.php";
     </div>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-    <script>
-        function promptJumlah(id) {
-            newUsername = prompt("masukkan jumlah baru");
-            if (newUsername == null) {
-                return alert("Ndak boleh yaa!")
-            } else {
-                document.querySelector("#newUsername" + id).setAttribute("value", "")
-                return document.querySelector("#newUsername" + id).setAttribute("value", newUsername)
-            }
-        }
-    </script>
     <!-- Core theme JS-->
     <script src="../Asset/js/scripts.js"></script>
     <script src="../Asset/js/ResponsiveNavUser.js"></script>

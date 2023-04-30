@@ -1,5 +1,5 @@
 <?php
-include "../Controller/UserController.php";
+include "../Controller/KategoriController.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -98,11 +98,11 @@ include "../Controller/UserController.php";
                         <div class="card" style="padding: 10px;">
                             <div class="card-header">
                                 <div class="content-header">
-                                    <h2 class="text-header">User View</h2>
-                                    <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='Signup.php'">
+                                    <h2 class="text-header">Kategori View</h2>
+                                    <button class="btn p-0 mb-3 mt-3" onclick="window.location.href='InputKategoriAdmin.php'">
                                         <span class="d-flex align-items-center">
                                             <i class="gg-math-plus" style="margin-right: 5px;"></i>
-                                            <span class="fw-bold">Add User</span>
+                                            <span class="fw-bold">Add Kategori</span>
                                         </span>
                                     </button>
                                 </div>
@@ -112,36 +112,29 @@ include "../Controller/UserController.php";
                                     <thead>
                                         <tr>
                                             <th class="text-center">No</th>
-                                            <th>Username</th>
-                                            <th>Password</th>
+                                            <th>Kategori</th>
+                                            <th>Gambar</th>
                                             <th>Aksi</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($user->getAll() as $u) {
+                                        foreach ($kategori->getAll() as $k) {
                                         ?>
                                             <tr>
                                                 <td class=" text-center"><?= $no++ ?></td>
-                                                <td><?= $u['username'] ?></td>
-                                                <?php
-                                                $pw = "";
-                                                for ($i = 0; $i < strlen($u["password"]); $i++) {
-                                                    $pw .= "*";
-                                                }
-                                                ?>
-                                                <td><?= $pw ?></td>
+                                                <td><?= $k['kategori'] ?></td>
+                                                <td><?= $k["gambar"] ?></td>
                                                 <td class="text-center">
                                                     <div class="d-flex flex-row">
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <input type="hidden" id="newUsername<?= $u["id"] ?>" name="newUsername" value="">
-                                                            <button class="btn btn-warning border-secondary me-1" type="submit" name="editUser" onclick="promptJumlah(<?= $u['id'] ?>)"><img src="../Asset/image/edit.png" alt=""></button>
+                                                        <form action="EditKategoriAdmin.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $k["id"] ?>">
+                                                            <button class="btn btn-warning border-secondary me-1" type="submit" name=""><img src="../Asset/image/edit.png" alt=""></button>
                                                         </form>
-                                                        <form action="../Controller/UserController.php" method="post">
-                                                            <input type="hidden" name="id" value="<?= $u["id"] ?>">
-                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteUser"><img src="../Asset/image/trash.png" alt=""></button>
+                                                        <form action="../Controller/KategoriController.php" method="post">
+                                                            <input type="hidden" name="id" value="<?= $k["id"] ?>">
+                                                            <button class="btn btn-danger border-secondary" type="submit" name="deleteKategori"><img src="../Asset/image/trash.png" alt=""></button>
                                                         </form>
                                                     </div>
                                                 </td>
@@ -160,12 +153,12 @@ include "../Controller/UserController.php";
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function promptJumlah(id) {
-            newUsername = prompt("masukkan jumlah baru");
-            if (newUsername == null) {
+            newKategori = prompt("masukkan kategori baru");
+            if (newKategori == null) {
                 return alert("Ndak boleh yaa!")
             } else {
-                document.querySelector("#newUsername" + id).setAttribute("value", "")
-                return document.querySelector("#newUsername" + id).setAttribute("value", newUsername)
+                document.querySelector("#newKategori" + id).setAttribute("value", "")
+                return document.querySelector("#newKategori" + id).setAttribute("value", newKategori)
             }
         }
     </script>
