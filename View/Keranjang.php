@@ -23,6 +23,7 @@ if (!isset($_SESSION["id"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
     <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
+    <link rel="stylesheet" href="../Asset/css/Checkout.css">
 </head>
 
 <body>
@@ -134,8 +135,15 @@ if (!isset($_SESSION["id"])) {
                     <form action="">
                         <input type="hidden" name="id">
                         <input type="hidden" name="total">
-                        <input class="btn btn-primary w-100 mt-3" type="submit" value="Checkout">
                     </form>
+                    <!-- IKI POPUP E SEH METU KUDU DILEBOKKE NG FORM -->
+                    <input class="btn btn-primary w-100 mt-3" onclick="openPopup()" type="submit" value="Checkout">
+                    <div class="popup text-white" id="popup">
+                        <img src="../Asset/image/Checkout/404-tick.png">
+                        <h2>Makasih ! :)</h2>
+                        <p>Detail Belanja boleh minta ke Kasir ya</p>
+                        <button type="button" onclick="closePopup()">OK</button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -152,6 +160,12 @@ if (!isset($_SESSION["id"])) {
                 document.querySelector("#newJumlah" + id).setAttribute("value", "")
                 return document.querySelector("#newJumlah" + id).setAttribute("value", newJumlah)
             }
+        }
+        function openPopup(){
+            popup.classList.add("open-popup");
+        }
+        function closePopup(){
+            popup.classList.remove("open-popup");
         }
     </script>
 </body>
