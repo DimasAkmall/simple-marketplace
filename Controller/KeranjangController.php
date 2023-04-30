@@ -7,6 +7,7 @@ include "../Model/Keranjang.php";
 $keranjang = new Keranjang();
 
 if (isset($_POST["keranjang"])) {
+    $cek = 0;
     if (!isset($_SESSION["id"])) {
         echo "<script>
         alert('Silahkan Login!')
@@ -14,15 +15,25 @@ if (isset($_POST["keranjang"])) {
     </script>";
     }
 
-    $k = $keranjang->insertKeranjang($_POST["id_user"], $_POST["id_barang"], $_POST["jumlah"]);
-    if ($k == false) {
-        echo "<script>
-            alert('Gagal masuk keranjang!')
-            window.location.href = '../View/Index.php';
-        </script>";
+    foreach ($keranjang->getKeranjangById($_SESSION["id"]) as $k) {
+        if ($k["id_barang"] == $_POST["id_barang"]) {
+            $jumlah = $k["jumlah"] + $_POST["jumlah"];
+            $keranjang->updateKeranjang($k["id"], $jumlah);
+            $cek++;
+        }
     }
 
-    return header("Location: ../View/Keranjang.php?id=" . $_SESSION["id"]);
+    if ($cek == 0) {
+        $k = $keranjang->insertKeranjang($_POST["id_user"], $_POST["id_barang"], $_POST["jumlah"]);
+        if ($k == false) {
+            echo "<script>
+            alert('Gagal masuk keranjang!')
+            window.location.href = '../View/Index.php';
+            </script>";
+        }
+    }
+
+    return header("Location: ../View/Keranjang.php");
 }
 
 if (isset($_POST["delete"])) {
@@ -34,7 +45,7 @@ if (isset($_POST["delete"])) {
         </script>";
     }
 
-    return header("Location: ../View/Keranjang.php?id=" . $_SESSION["id"]);
+    return header("Location: ../View/Keranjang.php");
 }
 
 if (isset($_POST["edit"])) {
@@ -47,5 +58,5 @@ if (isset($_POST["edit"])) {
             </script>";
         }
     }
-    return header("Location: ../View/Keranjang.php?id=" . $_SESSION["id"]);
+    return header("Location: ../View/Keranjang.php");
 }

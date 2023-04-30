@@ -7,10 +7,6 @@ if (isset($_SESSION["id"])) {
 
 $_SESSION["prevPage"] = "Index.php";
 
-// if (!isset($_SESSION["id"]) || $_SESSION["role"] != "user") {
-//     header("Location: Login.php");
-// }
-
 include "../Controller/KategoriController.php";
 include "../Controller/BarangController.php";
 ?>
@@ -40,7 +36,9 @@ include "../Controller/BarangController.php";
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">
                     <div class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                        <form action="Keranjang.php" method="post">
+                            <button class="btn btn-tertiary p-0" type="submit" name=""><img src="../Asset/image/cart.png" alt="" width="30"></button>
+                        </form>
                     </div>
                     <div class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
@@ -92,77 +90,69 @@ include "../Controller/BarangController.php";
         <div class="p-3 bg-secondary rounded">
             <h6>KATEGORI</h6>
             <div class="d-flex flex-row overflow-auto ps-md-4 ps-lg-0 box-category">
-                <h6>KATEGORI</h6>
-                <div class="d-flex flex-row overflow-auto ps-md-4 ps-lg-0 box-category">
-                    <?php foreach ($kategori->getAll() as $k) { ?>
-                        <a class="btn btn-dark p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
-                            <a class="btn btn-dark p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
-                                <img src="../Asset/image/Kategori/<?= $k["gambar"] ?>" alt="" width="40">
-                            </a>
-                        </a>
-                    <?php } ?>
-                </div>
+                <?php foreach ($kategori->getAll() as $k) { ?>
+                    <a class="btn btn-dark p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
+                        <img src="../Asset/image/Kategori/<?= $k["gambar"] ?>" alt="" width="40">
+                    </a>
+                <?php } ?>
             </div>
         </div>
+    </div>
 
-        <!-- MAIN CONTENT -->
-        <div class="container mt-4">
-            <h3 class="mb-3">Produk Terbaru</h3>
-            <div class="row">
-                <?php foreach ($barang->getAllNew() as $b) { ?>
-                    <div class="col-6 col-md-3 col-lg-2 mb-4">
-                        <div class="card h-100">
-                            <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" class="card-img-top w-auto m-2" alt="...">
-                            <div class="card-body d-flex justify-content-between flex-column">
-                                <div>
-                                    <h5 class="card-title"><?= $b["namaBrg"] ?></h5>
-                                    <p class="card-text">Rp. <?= number_format($b["harga"]) ?></p>
-                                </div>
-                                <a href="./DetailBarang.php?id=<?= $b["id"] ?>" class="btn btn-primary w-100 mt-3">Beli</a>
+    <!-- MAIN CONTENT -->
+    <div class="container mt-4">
+        <h3 class="mb-3">Produk Terbaru</h3>
+        <div class="row">
+            <?php foreach ($barang->getAllNew() as $b) { ?>
+                <div class="col-6 col-md-3 col-lg-2 mb-4">
+                    <div class="card h-100">
+                        <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" class="card-img-top w-auto m-2" alt="...">
+                        <div class="card-body d-flex justify-content-between flex-column">
+                            <div>
+                                <h5 class="card-title"><?= $b["namaBrg"] ?></h5>
+                                <p class="card-text">Rp. <?= number_format($b["harga"]) ?></p>
                             </div>
+                            <a href="./DetailBarang.php?id=<?= $b["id"] ?>" class="btn btn-primary w-100 mt-3">Beli</a>
                         </div>
                     </div>
-                <?php } ?>
+                </div>
+            <?php } ?>
 
-            </div>
         </div>
+    </div>
 
-        <!-- FOOTER -->
-        <div class="container-fluid mt-4 bg-secondary">
-            <div class="container">
-                <div class="row d-flex justify-content-between pt-2 pb-5">
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>Kategori</h5>
-                        <p class="m-0">1</p>
-                        <p class="m-0">2</p>
-                        <p class="m-0">3</p>
-                        <p class="m-0">4</p>
-                        <p class="m-0">5</p>
-                        <p class="m-0">6</p>
-                        <p class="m-0">7</p>
-                    </div>
-                    <div class="col-6 col-md-2 mb-3">
-                        <h5>About</h5>
-                        <p class="m-0">1</p>
-                        <p class="m-0">2</p>
-                        <p class="m-0">3</p>
-                        <p class="m-0">4</p>
-                    </div>
-                    <div class="col-8 col-md-2 mb-3">
-                        <h5>Contact</h5>
-                        <p class="m-0">1</p>
-                        <p class="m-0">2</p>
-                        <p class="m-0">3</p>
-                    </div>
-                    <div class="col-12 col-md-5 mb-3">
-                        <h5>LOGO BELANJAIN</h5>
-                    </div>
+    <!-- FOOTER -->
+    <div class="container-fluid mt-4 bg-dark">
+        <div class="container">
+            <div class="row d-flex justify-content-between pt-2 pb-5">
+                <div class="col-6 col-md-2 mb-3">
+                    <h5 class="text-light">Kategori</h5>
+                    <?php foreach ($kategori->getAll() as $k) { ?>
+                        <a class="d-block text-decoration-none link-secondary" href="Kategori.php?kategori=<?= $k["kategori"] ?>"><?= $k["kategori"] ?></a>
+                    <?php } ?>
+                </div>
+                <div class="col-6 col-md-2 mb-3 text-secondary">
+                    <h5 class="text-light">Company</h5>
+                    <p class="m-0">About us</p>
+                    <p class="m-0">Contact us</p>
+                    <p class="m-0">Privacy police</p>
+                    <p class="m-0">Terms of service</p>
+                </div>
+                <div class="col-8 col-md-2 mb-3 text-secondary">
+                    <h5 class="text-light">Team</h5>
+                    <p class="m-0">Riyo Hendry Hermawan</p>
+                    <p class="m-0">Gilang Hidayatullah</p>
+                    <p class="m-0">Dimas Akmal Widi Pradana</p>
+                </div>
+                <div class="col-12 col-md-5 mb-3">
+                    <h5 class="text-light">BELANJAIN</h5>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script src="../Asset/js/ResponsiveNavUser.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="../Asset/js/ResponsiveNavUser.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
 </body>
 
 </html>

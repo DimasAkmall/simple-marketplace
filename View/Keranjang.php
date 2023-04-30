@@ -2,6 +2,11 @@
 session_start();
 include "../Controller/KeranjangController.php";
 include "../Controller/BarangController.php";
+if (isset($_SESSION["id"])) {
+    $id = $_SESSION["id"];
+    $username = $_SESSION["username"];
+}
+
 if (!isset($_SESSION["id"])) {
     header("Location: Index.php");
 }
@@ -24,10 +29,12 @@ if (!isset($_SESSION["id"])) {
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
             <div class="navbar-expand-md d-flex flex-row">
                 <div class="nav-item d-flex align-items-center">
-                    <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                    <form action="Keranjang.php" method="post">
+                        <button class="btn btn-tertiary p-0" type="submit" name=""><img src="../Asset/image/cart.png" alt="" width="30"></button>
+                    </form>
                 </div>
                 <div class="nav-item dropdown ms-3">
                     <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
@@ -59,7 +66,7 @@ if (!isset($_SESSION["id"])) {
                     <tbody>
                         <?php
                         $total = 0;
-                        foreach ($keranjang->getKeranjangById($_GET["id"]) as $k) {
+                        foreach ($keranjang->getKeranjangById($_SESSION["id"]) as $k) {
                             foreach ($barang->getBarangById($k["id_barang"]) as $b) {
                                 $tempTotal = $k["jumlah"] * $b["harga"];
                                 $total += $tempTotal; ?>

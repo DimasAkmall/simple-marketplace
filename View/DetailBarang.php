@@ -29,7 +29,7 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="#">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
             <?php if (!isset($_SESSION["role"])) : ?>
                 <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
                     <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
@@ -38,7 +38,9 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">
                     <div class="nav-item d-flex align-items-center">
-                        <a class="nav-link" href="./Keranjang.php?id=<?= $id ?>"><img src="../Asset/image/cart.png" alt="" width="30" /></a>
+                        <form action="Keranjang.php" method="post">
+                            <button class="btn btn-tertiary p-0" type="submit" name=""><img src="../Asset/image/cart.png" alt="" width="30"></button>
+                        </form>
                     </div>
                     <div class="nav-item dropdown ms-3">
                         <a class="nav-link dropdown-toggle m-auto text-light" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" id="toggler">
