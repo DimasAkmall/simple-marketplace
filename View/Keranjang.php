@@ -67,7 +67,9 @@ if (!isset($_SESSION["id"])) {
                     <tbody>
                         <?php
                         $total = 0;
+                        $jmlKeranjang = 0;
                         foreach ($keranjang->getKeranjangById($_SESSION["id"]) as $k) {
+                            $jmlKeranjang++;
                             foreach ($barang->getBarangById($k["id_barang"]) as $b) {
                                 $tempTotal = $k["jumlah"] * $b["harga"];
                                 $total += $tempTotal; ?>
@@ -132,12 +134,15 @@ if (!isset($_SESSION["id"])) {
                 <div class="pe-md-4">
                     <h4 class="">Total:</h4>
                     <h1>Rp. <?= number_format($total) ?></h1>
-                    <form action="">
-                        <input type="hidden" name="id">
-                        <input type="hidden" name="total">
+                    <form action="../Controller/TransaksiController.php" method="post">
+                        <input type="hidden" name="id" value="<?= $_SESSION["id"] ?>">
+                        <input type="hidden" name="total" value="<?= $total ?>">
+                        <!-- IKI POPUP E SEH METU KUDU DILEBOKKE NG FORM -->
+                        <input class="btn btn-primary w-100 mt-3" type="submit" name="checkout" value="Checkout" <?php if ($jmlKeranjang == 0) {
+                                                                                                                        echo "disabled";
+                                                                                                                    } ?>>
                     </form>
-                    <!-- IKI POPUP E SEH METU KUDU DILEBOKKE NG FORM -->
-                    <input class="btn btn-primary w-100 mt-3" onclick="openPopup()" type="submit" value="Checkout">
+                    <!-- onclick="openPopup()" -->
                     <div class="popup text-white" id="popup">
                         <img src="../Asset/image/Checkout/404-tick.png">
                         <h2>Makasih ! :)</h2>
@@ -161,10 +166,12 @@ if (!isset($_SESSION["id"])) {
                 return document.querySelector("#newJumlah" + id).setAttribute("value", newJumlah)
             }
         }
-        function openPopup(){
+
+        function openPopup() {
             popup.classList.add("open-popup");
         }
-        function closePopup(){
+
+        function closePopup() {
             popup.classList.remove("open-popup");
         }
     </script>

@@ -87,7 +87,6 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
                                 <div class="mt-4 mb-3"> <span class="text-uppercase text-muted brand"><?= $b[0]["kategori"] ?></span>
                                     <h5 class="text-uppercase"><?= $b[0]["namaBrg"] ?></h5>
                                     <div class="ml-2"> <small class="dis-price">Rp. <?= number_format($b[0]["harga"]) ?></small></div>
-                                    <div class="ml-2"> <small class="dis-price">Rp. <?= number_format($b[0]["harga"]) ?></small></div>
                                 </div>
 
                                 <div class="container">

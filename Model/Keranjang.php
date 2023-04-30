@@ -47,4 +47,14 @@ class Keranjang {
             return false;
         }
     }
+
+    public function deleteKeranjangByIdUser($idUser) {
+        $query = $this->con->prepare("DELETE FROM keranjang WHERE id_user=:id");
+        $query->bindParam(":id", $idUser);
+        if ($query->execute()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }
