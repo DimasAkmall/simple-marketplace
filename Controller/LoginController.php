@@ -12,7 +12,7 @@ if (substr($_POST["username"], 0, 5) == "admin") {
         $_SESSION["id"] = $result[0]["id"];
         $_SESSION["username"] = $result[0]["username"];
         $_SESSION["role"] = $result[0]["role"];
-        header("Location: ../View/DashboardAdmin.php");
+        header("Location: ../View/DashAdmin.php");
     } else {
         echo "false";
         echo "<script>

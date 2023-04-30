@@ -145,7 +145,7 @@ include "../Controller/BarangController.php";
                     <p class="m-0">Dimas Akmal Widi Pradana</p>
                 </div>
                 <div class="col-12 col-md-5 mb-3">
-                    <h5 class="text-light">BELANJAIN</h5>
+                    <h5 class="text-light">BelanjaIn</h5>
                 </div>
             </div>
         </div>
