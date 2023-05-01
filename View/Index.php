@@ -162,7 +162,6 @@ include "../Controller/BarangController.php";
                 </div>
                 <div class="col-12 col-md-5 mb-3 h-100">
                     <div class="card border-0 bg-light shadow p-5  mt-4"><img class="my-3" src="../Asset/image/BelanjainLogo.png" alt=""></div>
-                    <!-- <h5 class="text-dark"><img src="../Asset/image/BelanjainLogo.png" alt=""></h5> -->
                 </div>
             </div>
         </div>
