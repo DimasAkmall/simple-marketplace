@@ -10,15 +10,14 @@ session_start();
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BelanjaIn | Sing Up</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-  <link rel="stylesheet" href="../Asset/css/LoginSingup.css">
 </head>
 
 <body>
-<section class="vh-100" style="background: #f5f5f5" >
+  <section class="vh-100" style="background: #f5f5f5">
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-light text-dark shadow" style="border-radius: 1rem;">
+          <div class="card bg-light text-dark shadow" style="border-radius: 1rem;">
             <div class="card-body p-5">
 
               <div class="text-center mb-5">
@@ -44,7 +43,7 @@ session_start();
                   <input type="password" name="cPassword" id="typeCnfrmPasswordX" class="form-control form-control-lg" required />
                 </div>
 
-                <button class="btn btn-outline-light btn-lg px-5 bg-primary mt-2 w-100" type="submit">Sign Up</button>
+                <button class="btn btn-outline-light btn-lg px-5 bg-primary mt-2 w-100" type="submit" style="height:60px;">Sign Up</button>
               </form>
 
               <div class="text-center mt-3">

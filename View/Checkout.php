@@ -8,11 +8,11 @@
     <title>Makasih :)</title>
     <link rel="stylesheet" href="../Asset/css/Checkout.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-<style>
-.bg{
-    background-image: url(../Asset/image/backgroundcekout.png);
-}
-</style>
+    <style>
+        .bg {
+            background-image: url(../Asset/image/backgroundcekout.png);
+        }
+    </style>
 </head>
 
 <body class="bg">
@@ -25,11 +25,10 @@
         </div>
     </div>
     <script>
-        openPopup();
-
-        function openPopup() {
+        window.addEventListener("load", () => {
             popup.classList.add("open-popup");
-        }
+
+        })
 
         function closePopup() {
             popup.classList.remove("open-popup");
