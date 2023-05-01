@@ -2,6 +2,7 @@
 session_start();
 include "../Controller/KeranjangController.php";
 include "../Controller/BarangController.php";
+
 if (isset($_SESSION["id"])) {
     $id = $_SESSION["id"];
     $username = $_SESSION["username"];
@@ -19,11 +20,10 @@ if (!isset($_SESSION["id"])) {
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BelanjaIn</title>
+    <title>BelanjaIn | Keranjang</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
     <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
-    <link rel="stylesheet" href="../Asset/css/Checkout.css">
 </head>
 
 <body>
@@ -137,23 +137,16 @@ if (!isset($_SESSION["id"])) {
                     <form action="../Controller/TransaksiController.php" method="post">
                         <input type="hidden" name="id" value="<?= $_SESSION["id"] ?>">
                         <input type="hidden" name="total" value="<?= $total ?>">
-                        <!-- IKI POPUP E SEH METU KUDU DILEBOKKE NG FORM -->
                         <input class="btn btn-primary w-100 mt-3" type="submit" name="checkout" value="Checkout" <?php if ($jmlKeranjang == 0) {
                                                                                                                         echo "disabled";
                                                                                                                     } ?>>
                     </form>
-                    <!-- onclick="openPopup()" -->
-                    <div class="popup text-white" id="popup">
-                        <img src="../Asset/image/Checkout/404-tick.png">
-                        <h2>Makasih ! :)</h2>
-                        <p>Detail Belanja boleh minta ke Kasir ya</p>
-                        <button type="button" onclick="closePopup()">OK</button>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="../Asset/js/ResponsiveNavUser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script>
@@ -165,14 +158,6 @@ if (!isset($_SESSION["id"])) {
                 document.querySelector("#newJumlah" + id).setAttribute("value", "")
                 return document.querySelector("#newJumlah" + id).setAttribute("value", newJumlah)
             }
-        }
-
-        function openPopup() {
-            popup.classList.add("open-popup");
-        }
-
-        function closePopup() {
-            popup.classList.remove("open-popup");
         }
     </script>
 </body>

@@ -4,7 +4,7 @@ include "../Model/Admin.php";
 $admin = new Admin();
 
 if (isset($_POST["insertAdmin"])) {
-    $a = $admin->insertAdmin($_POST["username"], $_POST["password"]);
+    $a = $admin->insertAdmin($_POST["username"], md5($_POST["password"]));
     if ($a == false) {
         echo "<script>
             alert('Gagal menginput!')

@@ -20,7 +20,7 @@ class Admin {
     }
 
     public function insertAdmin($username, $password) {
-        $query = $this->con->prepare("INSERT INTO admins(username, password) VALUES (:username , :password)");
+        $query = $this->con->prepare("INSERT INTO admins(username, password, role) VALUES (:username , :password, 'admin')");
         $query->bindParam(":username", $username);
         $query->bindParam(":password", $password);
 

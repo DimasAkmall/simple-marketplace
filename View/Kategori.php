@@ -16,7 +16,7 @@ $_SESSION["currentKategori"] = $_GET["kategori"];
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>BelanjaIn</title>
+    <title>BelanjaIn | <?= $_GET["kategori"] ?></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
     <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
@@ -30,7 +30,7 @@ $_SESSION["currentKategori"] = $_GET["kategori"];
             <?php if (!isset($_SESSION["role"])) : ?>
                 <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
                     <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
-                    <a class="btn btn-secondary" href="Register.php" role="button">Sign up</a>
+                    <a class="btn btn-secondary" href="Signup.php" role="button">Sign up</a>
                 </ul>
             <?php else : ?>
                 <div class="navbar-expand-md d-flex flex-row">

@@ -14,7 +14,6 @@ if (isset($_POST["checkout"])) {
     }
     $keranjang->deleteKeranjangByIdUser($_POST["id"]);
     echo "<script>
-        alert('Berhasil checkout!')
-        window.location.href = '../View/Keranjang.php';
+    window.location.href = '../View/Checkout.php';
     </script>";
 }

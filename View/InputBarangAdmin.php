@@ -13,9 +13,7 @@ $username = $_SESSION["username"];
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Simple Sidebar - Start Bootstrap Template</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <title>Dashboard Admin</title>
     <!-- Core theme CSS (includes Bootstrap)-->
     <link rel="stylesheet" href="../Asset/css/StyleAdmin.css">
     <!-- css gg  -->
@@ -32,7 +30,7 @@ $username = $_SESSION["username"];
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light fs-4 py-2">BelanjaIn</div>
+            <div class="sidebar-heading border-bottom bg-light fs-4 py-2 fw-semibold">BelanjaIn</div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="DashAdmin.php">Dashboard</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="BarangAdmin.php">Barang</a>
@@ -95,7 +93,7 @@ $username = $_SESSION["username"];
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <label for="" class="form-label">Gambar:</label>
-                            <input type="file" class="form-control" id="" name="gambar" style="width:30rem;">
+                            <input type="file" class="form-control" id="" name="gambar" style="width:30rem;" accept="image/png, image/jpeg, image/jpg">
                         </div>
                         <div class="mb-3 d-flex align-items-start">
                             <label for="" class="form-label pe-3">Deskripsi:</label>
