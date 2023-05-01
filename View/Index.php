@@ -21,13 +21,29 @@ include "../Controller/BarangController.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link rel="stylesheet" href="../Asset/css/Index.css">
     <link rel="stylesheet" href="../Asset/css/Scrollbar.css">
+    <style>
+        .zoom {
+            transition: transform .5s;
+        }
+
+        .zoom:hover {
+            transform: scale(1.05);
+
+        }
+
+        .shadow {
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.1);
+            outline: none;
+
+        }
+    </style>
 </head>
 
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background: linear-gradient(108deg,#0d6efd 20%, #ffc107);">
         <div class="container">
-            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php"><img src="../Asset/image/BelanjainLogoNav.png" alt="" srcset=""></a>
             <?php if (!isset($_SESSION["role"])) : ?>
                 <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
                     <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
@@ -87,11 +103,11 @@ include "../Controller/BarangController.php";
 
     <!-- CATEGORY -->
     <div class="container mt-4">
-        <div class="p-3 bg-secondary rounded">
+        <div class="p-3 rounded" style="background-color :#E5E0F0">
             <h6>KATEGORI</h6>
             <div class="d-flex flex-row overflow-auto ps-md-4 ps-lg-0 box-category">
                 <?php foreach ($kategori->getAll() as $k) { ?>
-                    <a class="btn btn-dark p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
+                    <a class="btn btn-light p-3 me-3" href="Kategori.php?kategori=<?= $k["kategori"] ?>" role="button">
                         <img src="../Asset/image/Kategori/<?= $k["gambar"] ?>" alt="" width="40">
                     </a>
                 <?php } ?>
@@ -104,8 +120,8 @@ include "../Controller/BarangController.php";
         <h3 class="mb-3">Produk Terbaru</h3>
         <div class="row">
             <?php foreach ($barang->getAllNew() as $b) { ?>
-                <div class="col-6 col-md-3 col-lg-2 mb-4">
-                    <div class="card h-100">
+                <div class="col-6 col-md-3 col-lg-2 mb-4 zoom">
+                    <div class="card h-100 border-0 shadow">
                         <img src="../Asset/image/<?= $b["kategori"] ?>/<?= $b["gambar"] ?>" class="card-img-top w-auto m-2" alt="...">
                         <div class="card-body d-flex justify-content-between flex-column">
                             <div>
@@ -122,30 +138,31 @@ include "../Controller/BarangController.php";
     </div>
 
     <!-- FOOTER -->
-    <div class="container-fluid mt-4 bg-dark">
+    <div class="container-fluid mt-4 bg-light">
         <div class="container">
             <div class="row d-flex justify-content-between pt-2 pb-5">
                 <div class="col-6 col-md-2 mb-3">
-                    <h5 class="text-light">Kategori</h5>
+                    <h5 class="text-dark">Kategori</h5>
                     <?php foreach ($kategori->getAll() as $k) { ?>
                         <a class="d-block text-decoration-none link-secondary" href="Kategori.php?kategori=<?= $k["kategori"] ?>"><?= $k["kategori"] ?></a>
                     <?php } ?>
                 </div>
                 <div class="col-6 col-md-2 mb-3 text-secondary">
-                    <h5 class="text-light">Company</h5>
+                    <h5 class="text-dark">Company</h5>
                     <p class="m-0">About us</p>
                     <p class="m-0">Contact us</p>
                     <p class="m-0">Privacy police</p>
                     <p class="m-0">Terms of service</p>
                 </div>
                 <div class="col-8 col-md-2 mb-3 text-secondary">
-                    <h5 class="text-light">Team</h5>
+                    <h5 class="text-dark">Team</h5>
                     <p class="m-0">Riyo Hendry Hermawan</p>
                     <p class="m-0">Gilang Hidayatullah</p>
                     <p class="m-0">Dimas Akmal Widi Pradana</p>
                 </div>
-                <div class="col-12 col-md-5 mb-3">
-                    <h5 class="text-light">BelanjaIn</h5>
+                <div class="col-12 col-md-5 mb-3 h-100">
+                    <div class="card border-0 bg-light shadow p-5  mt-4"><img class="my-3" src="../Asset/image/BelanjainLogo.png" alt=""></div>
+                    <!-- <h5 class="text-dark"><img src="../Asset/image/BelanjainLogo.png" alt=""></h5> -->
                 </div>
             </div>
         </div>

@@ -57,7 +57,7 @@ $username = $_SESSION["username"];
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-            <div class="sidebar-heading border-bottom bg-light fs-4 py-2 fw-semibold">BelanjaIn</div>
+            <div class="sidebar-heading border-bottom bg-light fs-4 py-1 fw-semibold"><img src="../Asset/image/BelanjainLogoNav.png" alt="" height="43"></div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="DashAdmin.php">Dashboard</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="BarangAdmin.php">Barang</a>
@@ -97,7 +97,7 @@ $username = $_SESSION["username"];
                             <div class="card-header">
                                 <div class="content-header">
                                     <h2 class="text-header mb-5">Admin View</h2>
-                                    <div class="overflow-auto">
+                                    <div class="overflow-auto p-1">
                                         <form action="../Controller/AdminController.php" method="post" class="d-flex flex-row">
                                             <div class="mb-3 d-flex flex-row align-items-center me-3">
                                                 <label for="" class="form-label me-3">Username</label>

@@ -28,9 +28,9 @@ if (!isset($_SESSION["id"])) {
 
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background: linear-gradient(108deg,#0d6efd 20%, #ffc107);">
         <div class="container">
-            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php"><img src="../Asset/image/BelanjainLogoNav.png" alt="" srcset=""></a>
             <div class="navbar-expand-md d-flex flex-row">
                 <div class="nav-item d-flex align-items-center">
                     <form action="Keranjang.php" method="post">
@@ -114,17 +114,17 @@ if (!isset($_SESSION["id"])) {
         <div class="row mb-5">
             <div class="col-6 col-md-4 col-lg-3 d-flex align-items-end">
                 <?php if ($_SESSION["prevPage"] == "DetailBarang.php") { ?>
-                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>?id=<?= $_SESSION["currentIdBarang"] ?>" role="button">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?id=<?= $_SESSION["currentIdBarang"] ?>" role="button"  style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>
                 <?php } else if ($_SESSION["prevPage"] == "Kategori.php") { ?>
-                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button"  style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>
                 <?php } else { ?>
-                    <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>" role="button">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>" role="button"  style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>

@@ -14,16 +14,16 @@ session_start();
 </head>
 
 <body>
-  <section class="vh-100 bgcolor">
+  <section class="vh-100" style="background: #f5f5f5" >
     <div class="container py-5 h-100">
       <div class="row d-flex justify-content-center align-items-center h-100">
         <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-          <div class="card cardbg text-dark" style="border-radius: 1rem;">
+          <div class="card bg-light text-dark shadow" style="border-radius: 1rem;">
             <div class="card-body p-5">
 
-              <div class="text-center mb-3">
+              <div class="text-center mb-5">
                 <a href="Index.php">
-                  <img src="../Asset/image/BelanjaInlogo.png" alt="" height="90">
+                  <img src="../Asset/image/BelanjainLogo.png" alt="" height="90">
                 </a>
               </div>
 

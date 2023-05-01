@@ -27,9 +27,9 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
 
 <body>
     <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" style="background: linear-gradient(108deg,#0d6efd 20%, #ffc107);">
         <div class="container">
-            <a class="navbar-brand" href="./Index.php">BelanjaIn</a>
+            <a class="navbar-brand" href="./Index.php"><img src="../Asset/image/BelanjainLogoNav.png" alt="" srcset=""></a>
             <?php if (!isset($_SESSION["role"])) : ?>
                 <ul class="navbar-nav ms-auto py-1 d-flex flex-row">
                     <a class="btn btn-primary me-2" href="Login.php" role="button">Login</a>
@@ -72,12 +72,12 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
                                         <?php if ($_SESSION["prevPage"] == "Kategori.php") { ?>
-                                            <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button">
+                                            <a class="btn mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button"  style="background-color :#E5E0F0">
                                                 <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                                                 Back
                                             </a>
                                         <?php } else { ?>
-                                            <a class="btn btn-secondary mt-3" href="<?= $_SESSION["prevPage"] ?>" role="button">
+                                            <a class="btn mt-3" href="<?= $_SESSION["prevPage"] ?>" role="button" style="background-color :#E5E0F0">
                                                 <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                                                 Back
                                             </a>
