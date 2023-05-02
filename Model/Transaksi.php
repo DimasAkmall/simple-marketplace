@@ -7,7 +7,7 @@ class Transaksi {
     }
 
     public function getAll() {
-        $query = $this->con->prepare('SELECT transaksi.idTransaksi, transaksi.tglTransaksi, transaksi.total, users.username FROM transaksi LEFT JOIN users ON transaksi.idUser = users.id ORDER BY transaksi.idTransaksi DESC');
+        $query = $this->con->prepare('SELECT transaksi.idTransaksi, transaksi.idUser, transaksi.tglTransaksi, transaksi.total FROM transaksi ORDER BY transaksi.idTransaksi DESC');
         $query->execute();
         return $query->fetchAll();
     }

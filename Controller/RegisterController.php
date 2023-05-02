@@ -22,20 +22,26 @@ if (strlen($_POST["username"]) < 8 || strlen($_POST["password"]) < 8 || strlen($
             window.location.href = '../View/Signup.php';
         </script>";
     } else {
-        $username = $_POST["username"];
-        $password = md5($_POST["password"]);
-        $result = $u->insertUser($username, $password);
+        if ($_POST["password"] == $_POST["cPassword"]) {
+            $username = $_POST["username"];
+            $password = md5($_POST["password"]);
+            $result = $u->insertUser($username, $password);
 
-        if ($result == true) {
-            echo "<script>
+            if ($result == true) {
+                echo "<script>
                 alert('Berhasil membuat akun')
                 window.location.href = '../View/Login.php';
-            </script>";
-        } else {
-            echo "<script>
+                </script>";
+            } else {
+                echo "<script>
                 alert('Gagal membuat akun!')
                 window.location.href = '../View/Signup.php';
             </script>";
+            }
         }
+        echo "<script>
+            alert('Sandi salah!!')
+            window.location.href = '../View/Signup.php';
+        </script>";
     }
 }

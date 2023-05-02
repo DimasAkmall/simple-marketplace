@@ -72,7 +72,7 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="d-flex align-items-center">
                                         <?php if ($_SESSION["prevPage"] == "Kategori.php") { ?>
-                                            <a class="btn mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button"  style="background-color :#E5E0F0">
+                                            <a class="btn mt-3" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button" style="background-color :#E5E0F0">
                                                 <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                                                 Back
                                             </a>
@@ -100,7 +100,7 @@ $_SESSION["currentIdBarang"] = $b[0]["id"];
                                         <div class="cart mt-4 mb-4 d-flex flex-column justify-content-end">
                                             <input type="hidden" name="id_user" value="<?= $id ?>">
                                             <input type="hidden" name="id_barang" value="<?= $b[0]["id"] ?>">
-                                            <input type="number" name="jumlah" class="form-control form-control-lg text-center" value="1" min="1">
+                                            <input type="number" name="jumlah" class="form-control form-control-lg text-center" value="1" min="1" max="99">
                                             <input class="btn btn-primary ms-auto mt-3 w-100 fs-5" type="submit" name="keranjang" value="Keranjang">
                                         </div>
                                     </form>

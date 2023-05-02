@@ -31,7 +31,7 @@ $b = $barang->getBarangById($_POST["id"]);
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
         <div class="border-end bg-white" id="sidebar-wrapper">
-        <div class="sidebar-heading border-bottom bg-light fs-4 py-1 fw-semibold"><img src="../Asset/image/BelanjainLogoNav.png" alt="" height="43"></div>
+            <div class="sidebar-heading border-bottom bg-light fs-4 py-1 fw-semibold"><img src="../Asset/image/BelanjainLogoNav.png" alt="" height="43"></div>
             <div class="list-group list-group-flush">
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="DashAdmin.php">Dashboard</a>
                 <a class="list-group-item list-group-item-action list-group-item-light p-3" href="BarangAdmin.php">Barang</a>
@@ -80,7 +80,7 @@ $b = $barang->getBarangById($_POST["id"]);
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <label for="" class="form-label pe-3">Harga:</label>
-                            <input type="text" class="form-control w-auto" id="" name="harga" value="<?= $b[0]["harga"] ?>" required>
+                            <input type="number" class="form-control w-auto" id="" name="harga" value="<?= $b[0]["harga"] ?>" required min="0">
                         </div>
                         <div class="mb-3 d-flex align-items-center">
                             <label for="" class="form-label">Gambar:</label>

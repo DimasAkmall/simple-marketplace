@@ -48,7 +48,7 @@ class Keranjang {
         }
     }
 
-    public function deleteKeranjangByIdUser($idUser) {
+    public function deleteKeranjangByUsername($idUser) {
         $query = $this->con->prepare("DELETE FROM keranjang WHERE id_user=:id");
         $query->bindParam(":id", $idUser);
         if ($query->execute()) {

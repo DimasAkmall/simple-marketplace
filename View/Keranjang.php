@@ -114,17 +114,17 @@ if (!isset($_SESSION["id"])) {
         <div class="row mb-5">
             <div class="col-6 col-md-4 col-lg-3 d-flex align-items-end">
                 <?php if ($_SESSION["prevPage"] == "DetailBarang.php") { ?>
-                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?id=<?= $_SESSION["currentIdBarang"] ?>" role="button"  style="background-color :#E5E0F0">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?id=<?= $_SESSION["currentIdBarang"] ?>" role="button" style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>
                 <?php } else if ($_SESSION["prevPage"] == "Kategori.php") { ?>
-                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button"  style="background-color :#E5E0F0">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>?kategori=<?= $_SESSION["currentKategori"] ?>" role="button" style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>
                 <?php } else { ?>
-                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>" role="button"  style="background-color :#E5E0F0">
+                    <a class="btn mt-3 text-dark" href="<?= $_SESSION["prevPage"] ?>" role="button" style="background-color :#E5E0F0">
                         <img src="../Asset/image/back-button.png" alt="" class="me-1" width="25">
                         Back
                     </a>
@@ -136,6 +136,7 @@ if (!isset($_SESSION["id"])) {
                     <h1>Rp. <?= number_format($total) ?></h1>
                     <form action="../Controller/TransaksiController.php" method="post">
                         <input type="hidden" name="id" value="<?= $_SESSION["id"] ?>">
+                        <input type="hidden" name="username" value="<?= $_SESSION["username"] ?>">
                         <input type="hidden" name="total" value="<?= $total ?>">
                         <input class="btn btn-primary w-100 mt-3" type="submit" name="checkout" value="Checkout" <?php if ($jmlKeranjang == 0) {
                                                                                                                         echo "disabled";
